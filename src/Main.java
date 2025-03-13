@@ -3,11 +3,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
+       String[][] maze= getMaze("src/input");
+       for (int i =0; i< maze.length;i++){
+           for (int j = 0; j<maze[0].length;j++){
+               System.out.print(maze[i][j]);
+           }
+           System.out.println();
+       }
+        Maze test = new Maze(maze);
+       test.part1();
     }
     public static String[][] getMaze(String fileName) {
         File f = new File(fileName);
