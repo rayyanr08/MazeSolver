@@ -13,7 +13,7 @@ public class Main {
            System.out.println();
        }
         Maze test = new Maze(maze);
-       test.part1();
+       test.part2();
     }
     public static String[][] getMaze(String fileName) {
         File f = new File(fileName);
