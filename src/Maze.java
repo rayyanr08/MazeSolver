@@ -117,34 +117,21 @@ public class Maze {
         solutions.add("(" + 0 + "," + 0 + ")");
         while (xCoord != inputMaze.length-1 || yCoord != inputMaze[0].length-1) {
             if (ifLeft()) {
+                solutions.add("(" + xCoord + "," + yCoord + ")");
             }
             if (ifRight()) {
+                solutions.add("(" + xCoord + "," + yCoord + ")");
             }
             if (ifUp()) {
+                solutions.add("(" + xCoord + "," + yCoord + ")");
             }
             if (ifDown()) {
+                solutions.add("(" + xCoord + "," + yCoord + ")");
             }
             if (cantMove()){
-                System.out.println(".");
                 inputMaze[xCoord][yCoord] = "#";
                 xCoord = 0;
                 yCoord = 0;
-            }
-        }
-        xCoord = 0;
-        yCoord = 0;
-        while (xCoord != inputMaze.length-1 || yCoord != inputMaze[0].length-1) {
-            if (ifLeft()) {
-                solutions.add("(" + xCoord + "," + yCoord + ")");
-            }
-            if (ifRight()) {
-                solutions.add("(" + xCoord + "," + yCoord + ")");
-            }
-            if (ifUp()) {
-                solutions.add("(" + xCoord + "," + yCoord + ")");
-            }
-            if (ifDown()) {
-                solutions.add("(" + xCoord + "," + yCoord + ")");
             }
         }
         for (int i = 0; i<solutions.size();i++){
@@ -154,5 +141,6 @@ public class Maze {
                 System.out.println(solutions.get(i));
             }
         }
+
     }
 }
