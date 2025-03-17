@@ -25,7 +25,7 @@ public class Maze {
     }
 
     public boolean ifDown() {
-        if (xCoord + 1 >= 0) {
+        if (xCoord + 1 >= 0 && xCoord + 1 <inputMaze.length) {
             if (inputMaze[xCoord + 1][yCoord].equals(".")) {
                 xCoord++;
                 inputMaze[xCoord-1][yCoord] = "+";
@@ -73,28 +73,27 @@ public class Maze {
         ifFork.add(n);
     }
 
-    public boolean canMove(){
+    public boolean cantMove(){
         int count = 0;
         if (ifDown()) count++;
         if (ifUp()) count++;
         if (ifLeft()) count++;
         if (ifRight()) count++;
         if (count == 0) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
 
     public void part1(){
         ArrayList<String> solutions = new ArrayList<String>();
         solutions.add("(" + 0 + "," + 0 + ")");
-        while (xCoord != inputMaze.length-1 && yCoord != inputMaze[0].length-1) {
+        while (xCoord != inputMaze.length-1 || yCoord != inputMaze[0].length-1) {
             if (ifLeft()) {
                 solutions.add("(" + xCoord + "," + yCoord + ")");
             }
             if (ifRight()) {
-                System.out.println("right");
                 solutions.add("(" + xCoord + "," + yCoord + ")");
             }
             if (ifUp()) {
@@ -105,31 +104,40 @@ public class Maze {
             }
         }
         for (int i = 0; i<solutions.size();i++){
-            System.out.print(solutions.get(i) + "--->");
+            if (i != solutions.size()-1){
+                System.out.print(solutions.get(i) + "--->");
+            } else {
+                System.out.println(solutions.get(i));
+            }
         }
     }
 
     public void part2(){
-
         ArrayList<String> solutions = new ArrayList<String>();
         solutions.add("(" + 0 + "," + 0 + ")");
-        int length = ifFork.size()-1;
-        while (xCoord != inputMaze.length-1 && yCoord != inputMaze[0].length-1) {
-            if (ifMultipleDirections()){
-                System.out.println("run");
-                addFork();
+        while (xCoord != inputMaze.length-1 || yCoord != inputMaze[0].length-1) {
+            if (ifLeft()) {
             }
-            while (!canMove()){
-                xCoord = ifFork.get(length)[0];
-                yCoord = ifFork.get(length)[1];
-                ifFork.remove(ifFork.get(length));
-            }
-                if (ifLeft()) {
-
-                    solutions.add("(" + xCoord + "," + yCoord + ")");
-                }
             if (ifRight()) {
-                System.out.println("right");
+            }
+            if (ifUp()) {
+            }
+            if (ifDown()) {
+            }
+            if (cantMove()){
+                System.out.println(".");
+                inputMaze[xCoord][yCoord] = "#";
+                xCoord = 0;
+                yCoord = 0;
+            }
+        }
+        xCoord = 0;
+        yCoord = 0;
+        while (xCoord != inputMaze.length-1 || yCoord != inputMaze[0].length-1) {
+            if (ifLeft()) {
+                solutions.add("(" + xCoord + "," + yCoord + ")");
+            }
+            if (ifRight()) {
                 solutions.add("(" + xCoord + "," + yCoord + ")");
             }
             if (ifUp()) {
@@ -140,7 +148,11 @@ public class Maze {
             }
         }
         for (int i = 0; i<solutions.size();i++){
-            System.out.print(solutions.get(i) + "--->");
+            if (i != solutions.size()-1){
+                System.out.print(solutions.get(i) + "--->");
+            } else {
+                System.out.println(solutions.get(i));
+            }
         }
     }
 }
