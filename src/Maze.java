@@ -76,10 +76,10 @@ public class Maze {
             }
         }
         for (int i = 0; i<solutions.size();i++){
-            if (i != solutions.size()-1){
-                System.out.print(solutions.get(i) + "--->");
+            if (i == solutions.size()-1){
+                System.out.print(solutions.get(i));
             } else {
-                System.out.println(solutions.get(i));
+                System.out.print(solutions.get(i) + "--->");
             }
         }
     }
@@ -94,7 +94,7 @@ public class Maze {
         }
 
         ArrayList<String> solutions = new ArrayList<>();
-        solutions.add("(" + xCoord + "," + yCoord + ")");
+        solutions.add("(" + 0 + "," + 0 + ")");
         visited[xCoord][yCoord] = "+";
 
         while (xCoord != inputMaze.length - 1 || yCoord != inputMaze[0].length - 1) {
@@ -131,10 +131,10 @@ public class Maze {
         }
 
         for (int i = 0; i < solutions.size(); i++) {
-            if (i != solutions.size() - 1) {
-                System.out.print(solutions.get(i) + " ---> ");
+           if (i == solutions.size()-1){
+                System.out.print(solutions.get(i));
             } else {
-                System.out.println(solutions.get(i));
+                System.out.print(solutions.get(i) + "--->");
             }
         }
     }
